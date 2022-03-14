@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>(@) / []</title>
+    <style>
+      body {
+          padding: 0;
+          margin: 0;
+          background-color: #333;
+      }
+
+      .container {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+      }
+
+      canvas {
+          background-color: #FFF;
+          margin: 0.1em;
+          border-radius: 0.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    </div>
+    <script>
+      let global_seed = 10;
+
+      let current_seed = 0;
+      function R(seed) {
+          current_seed = global_seed + seed + 1;
+          for (let i = 0; i < 8; i++) {
+              r();
+          }
+      }
+
+      function r() {
+          current_seed = (current_seed ^ (current_seed << 13)) & 0x7FFFFFFF;
+          current_seed = (current_seed ^ (current_seed >> 17)) & 0x7FFFFFFF;
+          current_seed = (current_seed ^ (current_seed << 5)) & 0x7FFFFFFF;
+          current_seed = (current_seed * 0x74D93C4 + 0x33633) & 0x7FFFFFFF;
+          return current_seed / 0x7FFFFFFF;
+      }
+
+      for (let i = 0; i < 72; i++) {
+          global_seed++;
+          let canvas = document.createElement('canvas');
+          canvas.width = 500;
+          canvas.height = 350;
+
+          document.querySelector('.container').appendChild(canvas);
+
+          const c = canvas.getContext('2d');
+
+          R(0);
+          eval(decodeURIComponent(location.hash.substr(1)));
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>(@) / []</title>
+    <style>
+      body {
+          padding: 0;
+          margin: 0;
+      }
+
+      .feed-container {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+      }
+
+      .feed {
+          display: flex;
+          flex-direction: column;
+          flex: 0;
+      }
+      .post {
+          display: flex;
+          flex-direction: column;
+          background-color: #FFF;
+          margin: 0;
+          padding: 0;
+          border-bottom: 1px solid #EEE;
+          border-left: 1px solid #EEE;
+          border-right: 1px solid #EEE;
+      }
+
+      .post__header {
+          padding: 1em;
+          vertical-align: middle;
+      }
+
+      .post__handle {
+          color: #444;
+          font-size: 80%;
+      }
+
+      .post__contents {
+          flex: 0;
+          padding: 0;
+          margin: 0;
+          background-color: #FFF;
+      }
+
+      .post__more {
+          border: none;
+          padding: 0.5em;
+          cursor: pointer;
+          background-color: #FFF;
+          color: #08F;
+          transition: background-color 0.2s ease;
+          text-align: center;
+      }
+
+      .post__more:hover {
+          background-color: #EEE;
+      }
+
+      .post__text {
+          padding: 0 1em;
+          padding-bottom: 1em;
+      }
+
+      .post__text > p {
+          margin: 0;
+      }
+
+      .post-end {
+          padding: 1em;
+          border: 1px solid #EEE;
+          border-top: none;
+          border-bottom: none;
+          color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="feed-container">
+      <div class="feed">
+        <div class="post">
+          <div class="post__header">󽺭 <span class="post__handle">@󽺭</span> &middot; Mar 13, 2022</div>
+          <script type="text/plain" class="content">
+            let i,s=r()*2+0.1;for(i=0;i<30;i++){c.beginPath();c.arc(250,175,90+Math.pow(r(),s)*30,0,Math.PI*2);c.fillStyle='rgba(0,0,80,5%)';c.fill();}
+          </script>
+        </div>
+        <div class="post">
+          <div class="post__header">󽺭 <span class="post__handle">@󽺭</span> &middot; Mar 8, 2022</div>
+          <div class="post__text">
+            <p>thinking about 5 keeps me up at night. like how??? it doesn't even exist</p>
+          </div>
+        </div>
+        <div class="post">
+          <div class="post__header">󽺭 <span class="post__handle">@󽺭</span> &middot; Mar 3, 2022</div>
+          <script type="text/plain" class="content">
+            let i,j,w,h,s=r(),t=r(),u=r()*r()*r()*80;for(i=0;i<900*s*s;i++)c.fillRect(r(w=r(c.fillStyle=(j=r()>0.2?1:0)?'#fff':r()<(t*t*t*t)?'#f00':'#000')*99)*(500-w),r()*((900*s+300)-(h=600/w)),w+u,h+u);
+          </script>
+        </div>
+        <div class="post">
+          <div class="post__header">󽺭 <span class="post__handle">@󽺭</span> &middot; Feb 8, 2022</div>
+          <div class="post__text">
+            <p>feels like yesterday didn't happen. anyone else?</p>
+          </div>
+        </div>
+        <div class="post">
+          <div class="post__header">󽺭 <span class="post__handle">@󽺭</span> &middot; Feb 7, 2022</div>
+          <div class="post__text">
+            <p>feels like yesterday didn't happen. anyone else?</p>
+          </div>
+        </div>
+        <div class="post">
+          <div class="post__header">󽺭 <span class="post__handle">@󽺭</span> &middot; Feb 6, 2022</div>
+          <div class="post__text">
+            <p>feels like yesterday didn't happen. anyone else?</p>
+          </div>
+        </div>
+        <div class="post">
+          <div class="post__header">󽺭 <span class="post__handle">@󽺭</span> &middot; Apr 30, 2021</div>
+          <div class="post__text">
+            <p>can't do math anymore</p>
+          </div>
+        </div>
+        <div class="post">
+          <div class="post__header">󽺭 <span class="post__handle">@󽺭</span> &middot; Jul 16, 2021</div>
+          <div class="post__text">
+            <p>What’s up?</p>
+          </div>
+        </div>
+        <div class="post">
+          <div class="post__header">󽺭 <span class="post__handle">@󽺭</span> &middot; Sep 6, 1832</div>
+          <div class="post__text">
+            <p></p>
+          </div>
+        </div>
+        <div class="post-end">
+          󽺭 has posted 1036372536 more updates. Keep scrolling to see more of 󽺭’s feed!
+        </div>
+      </div>
+    </div>
+    <script>
+      const global_seed = 9;
+
+      let current_seed = 0;
+      function R(seed) {
+          current_seed = global_seed + seed + 1;
+          for (let i = 0; i < 8; i++) {
+              r();
+          }
+      }
+
+      function r() {
+          current_seed = (current_seed ^ (current_seed << 13)) & 0x7FFFFFFF;
+          current_seed = (current_seed ^ (current_seed >> 17)) & 0x7FFFFFFF;
+          current_seed = (current_seed ^ (current_seed << 5)) & 0x7FFFFFFF;
+          current_seed = (current_seed * 0x74D93C4 + 0x33633) & 0x7FFFFFFF;
+          return current_seed / 0x7FFFFFFF;
+      }
+
+      for (const element of document.querySelectorAll('script.content')) {
+          const code = element.textContent.trim();
+          let parent = element.parentNode;
+          parent.removeChild(element);
+
+          const canvas = document.createElement('canvas');
+          canvas.className = 'post__content';
+          canvas.width = 500;
+          canvas.height = 350;
+
+          const c = canvas.getContext('2d');
+
+          R(0);
+          eval(code);
+          parent.appendChild(canvas);
+
+          const more = document.createElement('a');
+          more.href = './like#' + encodeURIComponent(code);
+          more.className = 'post__more';
+          more.textContent = 'More like this';
+
+          parent.appendChild(more);
+      }
+    </script>
+  </body>
+</html>
